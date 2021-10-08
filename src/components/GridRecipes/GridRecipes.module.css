@@ -1,0 +1,11 @@
+.GridRecipes{
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(2, 1fr);
+   display: grid;
+   width: 100%; 
+   max-width: 1400px; 
+   margin: 0 auto; 
+   grid-gap: 2rem 6rem;
+   position: relative;
+   min-height: 250px;
+}

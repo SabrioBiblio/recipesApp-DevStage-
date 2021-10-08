@@ -1,0 +1,123 @@
+.cardRecipeWrapper{
+   transition: all 1s ease;
+}
+.cardRecipeLink{
+   font-size: 18px;
+   margin-top: 1rem;
+   display: inline-block;
+   font-weight: 600;
+   background: #ffbe0a;
+   color: black;
+   padding: 0.4rem 1.2rem;
+   border-radius: 0.7rem;
+   box-shadow: #ffbe0a 0px 0px 1
+}
+.cardRecipeWrapper:not(.activeCard) .cardRecipe:hover{
+   background: rgb(220, 220, 220);
+   cursor: pointer;
+}
+.activeCard{
+   grid-row: var(--row-start) / var(--row-end);
+   grid-column: var(--column-start);
+}
+
+.cardRecipeWrapper.activeCard{
+   color: #fff;
+}
+.activeCard .cardRecipe{
+   background: #000
+}
+.cardRecipe h1{
+   font-size: 24px;
+}
+.cardRecipe{   
+   -webkit-box-shadow: 0px 0px 22px -15px rgba(34, 60, 80, 0.2);
+   -moz-box-shadow: 0px 0px 22px -15px rgba(34, 60, 80, 0.2);
+   box-shadow: 0px 0px 22px -15px rgba(34, 60, 80, 0.2);
+   background: #fff;
+   border-radius: 2rem;
+   transition: background 0.3s ease;
+   min-height: 180px;
+   padding: 1rem;
+   height: 100%;
+   display: flex;
+   position: relative;
+}
+.cardRecipeInfo{
+   margin-left: auto;
+   display: flex;
+   flex-direction: column;
+   padding: 1rem;
+   width: 80%;
+}
+.cardRecipeWrapper.activeCard .cardRecipeDescription{
+   display: block;
+}
+.cardRecipeWrapper:not(.activeCard) .cardRecipeDescription{
+   display: none;
+}
+.cardRecipeDescription{
+   margin: 2rem 0 2rem 0;
+   color: inherit;
+}
+.cardRecipeImageWrapper{
+   display: flex;;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   left: -65px;
+}
+.cardRecipeImage{
+   width: 150px;
+   border-radius: 50%;
+   height: 150px;
+   object-fit: none;
+}
+.cardRecipeProp{
+   width: 60%;
+   margin-top: auto;
+   display: flex;
+   justify-content: space-between;
+   position: relative;
+   color: inherit;
+}
+.cardRecipeProp::before{
+   position: absolute;
+   width: 1px;
+   height: 100%;
+   background: #000;
+   left: 0;
+   right: 0;
+   margin: 0 auto;
+   content: '';
+}
+.activeCard .cardRecipeProp::before{
+   background: #fff;
+}
+.cardRecipeProp > div{
+   text-align: center;
+}
+.cardRecipeProp label{
+   font-weight: 300;
+}
+.cardRecipeProp p{
+   text-align: center;
+}
+.cardRecipeServings{
+   display: flex;
+   justify-content: center;
+   max-width: 70px;
+   flex-wrap: wrap;
+   align-items: center;
+}
+.cardRecipeServings span{
+   margin-left: 0.08rem;
+}
+.cardRecipePropServing svg{
+   color: inherit;
+   margin: 0.3rem 0.05rem;
+}
+.cardRecipePropTime svg{
+   color: inherit;
+   margin: 0.3rem 0.25rem 0 0;
+}

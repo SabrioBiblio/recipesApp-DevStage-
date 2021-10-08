@@ -1,0 +1,11 @@
+.mainBannerWrapper{
+   background: #ffbe0a;
+   height: 80vh;
+   border-radius: 2rem;
+   position: relative;
+}
+.imageBanner{
+   position: absolute;
+   right: 60px;
+   bottom: 0;
+}

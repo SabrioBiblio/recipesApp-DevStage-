@@ -1,0 +1,15 @@
+.recipesCategoryWrapper{
+   width: 20%;
+}
+.recipesCardWrapper{
+   padding-left: 6rem;
+   width: 80%;
+}
+.recipesBlockWrapper{
+   display: flex;
+}
+.recipesBlockRow{
+   padding-top: 2rem;
+   background: #f5f3ef;
+}
+

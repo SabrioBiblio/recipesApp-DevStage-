@@ -1,0 +1,21 @@
+.instruction{
+   margin-bottom: 1rem;
+}
+.instructionTitle{
+   margin: 2rem 0;
+}
+.ingredientsWrapper{
+   margin-top: 1rem;
+   display: flex;
+}
+.ingredientsWrapper > div{
+   width: 68px;
+   height: 68px;
+   margin: 0 0.5rem;
+}
+.ingredientsWrapper > div:first-child{
+   margin-left: 0;
+}
+.ingredientsWrapper > div:last-child{
+   margin-right: 0;
+}

@@ -1,0 +1,31 @@
+.recipesCategoryList svg{
+   margin-right: 1rem;
+   background: white;
+   border-radius: 50%;
+   padding: 0.7rem;
+   width: 3rem !important;
+   height: 3rem !important;
+}
+.recipesCategoryList li{
+   padding: 0.5rem 0.5rem;
+   border-radius: 2rem;
+   border: 1px solid #e1e0dc;
+   display: flex;
+   align-items: center;
+   transition: background 0.3s ease;
+}
+.recipesCategoryList li.Active{
+   background: #feb92b;
+   border-color: #feb92b;
+}
+.recipesCategoryList li:hover{
+   background: #feb82b75;
+   cursor: pointer;
+}
+.recipesCategoryList li{
+   margin-bottom: 1rem;
+}
+.recipesCategoryList{
+   padding-right: 2rem;
+   margin-top: 2rem;
+}
