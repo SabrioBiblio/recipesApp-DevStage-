@@ -39,6 +39,7 @@ header.sticky-header{
    justify-content: space-between;
 }
 .header-cell-left{
+   flex-basis: 100px;
    display: flex;
    justify-content: left;
 }
@@ -47,6 +48,15 @@ header.sticky-header{
    justify-content: center;
 }
 .header-cell-right{
+   flex-basis: 100px;
    display: flex;
    justify-content: right;
+}
+.wishlist{
+   height: 26px;
+   width: unset !important;
+   color: black;
+}
+.header-cell-right > *{
+   margin: 0 0.5rem;
 }

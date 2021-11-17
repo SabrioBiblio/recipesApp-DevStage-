@@ -1,10 +1,17 @@
 import {React, useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+import Login from '../Login/Login';
+import Logout from '../Logout/Logout';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faHeart} from '@fortawesome/free-solid-svg-icons';
 
 import './Header.css';
 
 export default function Header() {
   const [isSticky, setSticky] = useState(false);
+
+  const {user} = useAuth();
 
   useEffect(() => {
     window.addEventListener('scroll', stickyHeader);
@@ -16,7 +23,6 @@ export default function Header() {
   const stickyHeader = () => {
     setSticky(ref.current.getBoundingClientRect().top + window.scrollY >= 100);
   };
-
 
   const ref = useRef(null);
 
@@ -35,6 +41,23 @@ export default function Header() {
               <li><a href="/">Price</a></li>
             </ul>
           </div>
+
+          <div className="primary-menu header-cell-right">
+            {user ?
+              <>
+                <Link to={{
+                  pathname: `/wishlist`}}
+                >
+                  <FontAwesomeIcon icon={faHeart} className="wishlist"/>
+                </Link>
+                <Logout/>
+              </> :
+              <>
+                <Login/>
+              </>
+            }
+          </div>
+
         </div>
       </div>
     </header>

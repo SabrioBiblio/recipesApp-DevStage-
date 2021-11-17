@@ -8,6 +8,8 @@ import * as actions from '../../store/actions';
 import Spinner from '../Spinner/Spinner';
 
 const GridRecipes = () => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(actions.getRecipes('Pizza'));
   }, []);
@@ -15,12 +17,8 @@ const GridRecipes = () => {
   const [activeCard, setActiveCard] = useState(0);
   const [recipeMain, setRecipeMain] = useState(0);
 
-
-  const dispatch = useDispatch();
-
-  const recipes = useSelector((state) => state.recipesReducer.recipes);
-
-  const status = useSelector((state) => state.recipesReducer.loading);
+  const recipes = useSelector((state) => state.recipesReducer.recipes.data);
+  const status = useSelector((state) => state.recipesReducer.recipes.loading);
 
   if (!recipes || status) {
     return (
@@ -38,21 +36,37 @@ const GridRecipes = () => {
     setRecipeMain(recipes[id]);
   };
 
-  const card = recipes.map((recipe, i) => {
-    return <CardRecipe
-      key={i}
-      data={recipe}
-      index={i}
-      click={setMain}
-      setActive={setActiveCard}
-      activeIndex={activeCard}/>;
-  }
-  );
+  const cardsSecondArr = [];
+
+  const cardsFirstArr = recipes.map((recipe, i) => {
+    if (i % 2) {
+      cardsSecondArr.push(<CardRecipe
+        key={i}
+        data={recipe}
+        index={i}
+        click={setMain}
+        setActive={setActiveCard}
+        activeIndex={activeCard}/>);
+    } else {
+      return <CardRecipe
+        key={i}
+        data={recipe}
+        index={i}
+        click={setMain}
+        setActive={setActiveCard}
+        activeIndex={activeCard}/>;
+    }
+  });
 
   return (
     <>
       <div className={s.GridRecipes}>
-        {card}
+        <div className={s.column}>
+          {cardsFirstArr}
+        </div>
+        <div className={s.column}>
+          {cardsSecondArr}
+        </div>
       </div>
     </>
   );

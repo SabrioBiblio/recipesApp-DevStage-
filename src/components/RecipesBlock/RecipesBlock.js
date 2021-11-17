@@ -18,7 +18,7 @@ const RecipesBlock = () => {
           </div>
           <div className={s.recipesCardWrapper}>
             <Search/>
-            <GridRecipes/>
+            <GridRecipes reducerProp={'recipes'}/>
           </div>
         </div>
       </div>

@@ -7,21 +7,41 @@ import {faClock, faUser, faHeart} from '@fortawesome/free-solid-svg-icons';
 import Ingredient from './Ingredient/Ingredient';
 import Instruction from './Instruction/Instruction';
 import Spinner from '../../components/Spinner/Spinner';
+import SimilarRecipe from './SimilarRecipe/SimilarRecipe';
+
+import similar from '../../similar.json';
 
 const RecipePage = () => {
   const {id} = useParams();
 
   const [recipe, setRecipe] = useState(null);
+  const [similarRecipesObjects, setSimilarRecipes] = useState(similar);
 
   useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=ea3fc04050e84243beb4a0a62b8b79af&ids=${id}`)
+    fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=3496c5a5b6b94a23af49f2e08cd17ec7&ids=${id}`)
         .then((res) => res.json())
-        .then((res) => setRecipe(res));
+        .then((res) => setRecipe(res[0]));
   }, [id]);
+
+
+  useEffect(() => {
+    if (similarRecipesObjects) {
+      setSimilarRecipes(similarRecipesObjects.map((recipe, i) => {
+        return <SimilarRecipe
+          title={recipe.title}
+          key={i}
+          servings={recipe.servings}
+          readyInMinutes={recipe.readyInMinutes}
+        />;
+      }));
+    }
+  }, []);
 
   if (recipe === null) {
     return (
-      <Spinner/>
+      <>
+        <Spinner/>
+      </>
     );
   }
   const {
@@ -32,11 +52,10 @@ const RecipePage = () => {
     summary,
     extendedIngredients,
     analyzedInstructions,
-  } = recipe[0];
+  } = recipe;
 
-
-  const ingredients = extendedIngredients.map((ingredients) => {
-    return <Ingredient image={ingredients.image}/>;
+  const ingredients = extendedIngredients.map((ingredients, index) => {
+    return <Ingredient image={ingredients.image} key={index}/>;
   });
 
   return (
@@ -74,6 +93,7 @@ const RecipePage = () => {
             </div>
           </div>
         </div>
+        {similarRecipesObjects}
       </div>
     </div>
   );
