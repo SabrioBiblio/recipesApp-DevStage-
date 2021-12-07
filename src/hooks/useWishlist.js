@@ -1,21 +1,22 @@
 import {useState} from 'react';
+import Wishlist from '../pages/Wishlist/Wishlist';
 import useDatabase from './useDatabase';
 
 const useWishlist = (recipeId) => {
 
   const {getDocument, setDocument} = useDatabase();
   const [hasItem, setHasItem] = useState(isInWishlist()); 
-
   const toggleWishlistData = async (id) => {
-    const whishlistData = await getDocument('users');
-    if(!whishlistData){
+    const wishlistData = await getDocument('users');
+    
+    if(!wishlistData){
       await setDocument('users', {
         recipesIds: [id],
       })
       localStorage.setItem('wishlist', JSON.stringify([id]))
       setHasItem(isInWishlist())
     }else{
-      const {recipesIds} = whishlistData;
+      const {recipesIds} = wishlistData;
       const filteredRecipes = recipesIds.filter((index) => index === id)
       if(filteredRecipes.length > 0) {
         const removedRecipes = recipesIds.filter((index) => index !== id)

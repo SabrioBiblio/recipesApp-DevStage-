@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import {initializeApp} from 'firebase/app';
 import 'firebase/auth';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import useDatabase from './hooks/useDatabase';
 
 import './index.css';
 import App from './App';
@@ -21,11 +20,6 @@ const app = initializeApp({
   appId: '1:585892664897:web:62d073dde70974687798c0',
   measurementId: 'G-4ZEXY0L8WH',
 });
-const {getDocument, setDocument} = useDatabase();
-const get = async () => {
-  const a = await getDocument('users');
-}
-get()
 
 const rootReducer = combineReducers({
   recipesReducer,
